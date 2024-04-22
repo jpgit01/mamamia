@@ -1,21 +1,23 @@
-import React, { useContext} from "react";
+import React, { useContext } from "react";
 import { MiContexto } from "../context/Contexto";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
+import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
-import Col from "react-bootstrap/Col";
-import pizza0 from "../assets/img/pizza-0.jpg";
-
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const navigate = useNavigate();
-  const datos = useContext(MiContexto);
+  const { datos, agregarProducto } = useContext(MiContexto);
 
   const handleClick = (id) => {
     navigate(`/Pizza/${id}`);
+  };
+
+  const handleAgregarProducto = (producto) => {
+    agregarProducto(producto);
   };
 
   return (
@@ -24,7 +26,7 @@ const Home = () => {
         {datos.map((num, index) => (
           <Col className="col-md-3 mt-5" key={index}>
             <Card style={{ width: "100%" }}>
-              <Card.Img variant="top" src={pizza0} />
+              <Card.Img variant="top" src={num.src} />
               <Card.Body>
                 <Card.Title>
                   <h3>Napolitana {num.id}</h3>
@@ -49,7 +51,7 @@ const Home = () => {
                 <Row>
                   <div className="text-center">
                     <Button onClick={() => handleClick(num.id)} variant="primary">Ver mas</Button>{" "}
-                    <Button variant="danger">Añadir</Button>{" "}
+                    <Button onClick={() => handleAgregarProducto(num)} variant="danger">Añadir</Button>{" "}
                   </div>
                 </Row>
               </Card.Footer>
