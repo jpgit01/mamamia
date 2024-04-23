@@ -1,54 +1,76 @@
-import React, { useContext, useState } from 'react';
-import { MiContexto } from '../context/Contexto';
+import React, { useContext, useState } from "react";
+import { MiContexto } from "../context/Contexto";
+import Container from "react-bootstrap/esm/Container";
+import Row from "react-bootstrap/esm/Row";
+import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/esm/Button";
 
 const Carrito = () => {
-  const { productosSeleccionados, setProductosSeleccionados } = useContext(MiContexto);
+  const { productosSeleccionados, setProductosSeleccionados } =
+    useContext(MiContexto);
   const [cantidades, setCantidades] = useState({});
-  
-  const [montosIndividuales, setMontosIndividuales] = useState({}); 
+
+  const [montosIndividuales, setMontosIndividuales] = useState({});
 
   const sumarCantidad = (id, monto) => {
-    setCantidades(prevCantidades => ({
+    setCantidades((prevCantidades) => ({
       ...prevCantidades,
-      [id]: (prevCantidades[id] || 0) + 1
+      [id]: (prevCantidades[id] || 0) + 1,
     }));
-    setMontosIndividuales(prevMontos => ({
+    setMontosIndividuales((prevMontos) => ({
       ...prevMontos,
-      [id]: (prevMontos[id] || 0) + monto 
+      [id]: (prevMontos[id] || 0) + monto,
     }));
   };
 
   const restarCantidad = (id, monto) => {
     if (cantidades[id] && cantidades[id] > 0) {
-      setCantidades(prevCantidades => ({
+      setCantidades((prevCantidades) => ({
         ...prevCantidades,
-        [id]: prevCantidades[id] - 1
+        [id]: prevCantidades[id] - 1,
       }));
-      setMontosIndividuales(prevMontos => ({
+      setMontosIndividuales((prevMontos) => ({
         ...prevMontos,
-        [id]: (prevMontos[id] || 0) - monto 
+        [id]: (prevMontos[id] || 0) - monto,
       }));
     }
   };
-
+  
   return (
-    <div>
-      <h2>Productos Seleccionados</h2>
-      <ul>
-        {productosSeleccionados.map(producto => (
-          <li key={producto.id}>
-            <p>ID: {producto.id}</p>
-            <p>Nombre: {producto.nombre}</p>
-            <p>Descripción: {producto.descripcion}</p>
-            <p>Monto: {producto.monto}</p>
-            <p>Cantidad: {cantidades[producto.id] || 0}</p>
-            <p>Total: {montosIndividuales[producto.id] || 0}</p>
-            <button onClick={() => sumarCantidad(producto.id, producto.monto)}>+</button>
-            <button onClick={() => restarCantidad(producto.id, producto.monto)}>-</button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Container>
+      <Row>
+      <h2>Detalles del pedido</h2>
+        <Table striped bordered hover>
+          <tbody>
+            {productosSeleccionados.map((producto) => (
+              <tr key={producto.id}>
+                <td>ID: {producto.id}</td>
+                <td>Nombre: {producto.nombre}</td>
+                <td>Descripción: {producto.descripcion}</td>
+                <td>Monto: {producto.monto}</td>
+                <td></td>
+                <td>
+                  Total: {montosIndividuales[producto.id] || producto.monto}
+                </td>
+                <td>
+                  <Button
+                    onClick={() => sumarCantidad(producto.id, producto.monto)}
+                  >
+                    +
+                  </Button>
+                  Cantidad: {cantidades[producto.id] || 1}
+                  <Button
+                    onClick={() => restarCantidad(producto.id, producto.monto)}
+                  >
+                    -
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </Row>
+    </Container>
   );
 };
 
