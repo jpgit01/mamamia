@@ -10,7 +10,11 @@ function Menu() {
   return (
     <Navbar expand="lg" className="menuCeleste" data-bs-theme="dark">
       <Container>
-        <Navbar.Brand href="/Home">Pizzeria Mamma Mia!</Navbar.Brand>
+        <Navbar.Brand href="/Home">
+          <NavLink className={claseActive} to={"/Home"}>
+            Pizzeria Mamma Mia!
+          </NavLink>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

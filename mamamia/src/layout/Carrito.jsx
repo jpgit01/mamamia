@@ -1,8 +1,35 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { MiContexto } from '../context/Contexto';
 
 const Carrito = () => {
-  const { productosSeleccionados } = useContext(MiContexto);
+  const { productosSeleccionados, setProductosSeleccionados } = useContext(MiContexto);
+  const [cantidades, setCantidades] = useState({});
+  
+  const [montosIndividuales, setMontosIndividuales] = useState({}); 
+
+  const sumarCantidad = (id, monto) => {
+    setCantidades(prevCantidades => ({
+      ...prevCantidades,
+      [id]: (prevCantidades[id] || 0) + 1
+    }));
+    setMontosIndividuales(prevMontos => ({
+      ...prevMontos,
+      [id]: (prevMontos[id] || 0) + monto 
+    }));
+  };
+
+  const restarCantidad = (id, monto) => {
+    if (cantidades[id] && cantidades[id] > 0) {
+      setCantidades(prevCantidades => ({
+        ...prevCantidades,
+        [id]: prevCantidades[id] - 1
+      }));
+      setMontosIndividuales(prevMontos => ({
+        ...prevMontos,
+        [id]: (prevMontos[id] || 0) - monto 
+      }));
+    }
+  };
 
   return (
     <div>
@@ -13,6 +40,11 @@ const Carrito = () => {
             <p>ID: {producto.id}</p>
             <p>Nombre: {producto.nombre}</p>
             <p>Descripción: {producto.descripcion}</p>
+            <p>Monto: {producto.monto}</p>
+            <p>Cantidad: {cantidades[producto.id] || 0}</p>
+            <p>Total: {montosIndividuales[producto.id] || 0}</p>
+            <button onClick={() => sumarCantidad(producto.id, producto.monto)}>+</button>
+            <button onClick={() => restarCantidad(producto.id, producto.monto)}>-</button>
           </li>
         ))}
       </ul>
