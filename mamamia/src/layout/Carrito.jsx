@@ -48,7 +48,6 @@ const Carrito = () => {
                 <td>Nombre: {producto.nombre}</td>
                 <td>Descripción: {producto.descripcion}</td>
                 <td>Monto: {producto.monto}</td>
-                <td></td>
                 <td>
                   Total: {montosIndividuales[producto.id] || producto.monto}
                 </td>
