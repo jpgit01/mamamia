@@ -22,7 +22,7 @@ const Carrito = () => {
       [id]: (prevMontos[id] || 0) + monto,
     }));
   };
-
+  
   const restarCantidad = (id, monto) => {
     if (cantidades[id] && cantidades[id] > 0) {
       setCantidades((prevCantidades) => ({
@@ -32,6 +32,15 @@ const Carrito = () => {
       setMontosIndividuales((prevMontos) => ({
         ...prevMontos,
         [id]: (prevMontos[id] || 0) - monto,
+      }));
+    } else {
+      setCantidades((prevCantidades) => ({
+        ...prevCantidades,
+        [id]: 0, 
+      }));
+      setMontosIndividuales((prevMontos) => ({
+        ...prevMontos,
+        [id]: 0, 
       }));
     }
   };

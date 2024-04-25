@@ -12,7 +12,7 @@ function App() {
       <BrowserRouter>
       <Menu/>
         <Routes>
-          <Route path={"/Home"} Component={Home} />
+          <Route path={"/"} Component={Home} />
           <Route path={"/Pizza/:id"} Component={Pizza} />
           <Route path={"/Carrito"} Component={Carrito} />
           <Route path={"*"} Component={NotFound} />
