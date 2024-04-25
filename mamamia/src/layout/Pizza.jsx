@@ -19,6 +19,7 @@ const Pizza = () => {
   return (
     <Container>
       {pizza ? (
+        <>
         <Row className="border mt-5">
           <Col xs={6} className="p-0">
             <img className="img-fluid" src={pizza.img} alt={pizza.nombre} />
@@ -28,11 +29,15 @@ const Pizza = () => {
             <p>{pizza.desc}</p>
             
           </Col>
+          <Col>
+          <h3>$ {pizza.price}</h3>
+          </Col>
           <Col className="text-end m-3">
           <Button onClick={() => handleAgregarProducto(pizza)} variant="danger">Añadir</Button>{" "}
           </Col>
 
         </Row>
+        </>
       ) : (
         <Row>Pizza no encontrada</Row>
       )}
