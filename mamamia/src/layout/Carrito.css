@@ -1,0 +1,12 @@
+.minim{
+    width: 150px
+}
+.cantidad{
+    display: flex;
+    flex-direction: row;
+}
+
+.tama{
+    width: 100px;
+    height: 50px;
+}

@@ -47,7 +47,7 @@ const Home = () => {
               </Card.Body>
               <Card.Footer>
                 <Row className="text-center mt-3 mb-3">
-                  <h2>{num.price}</h2>
+                  <h2>$ {num.price}</h2>
                 </Row>
                 <Row>
                   <div className="text-center">
