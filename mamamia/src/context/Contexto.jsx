@@ -1,25 +1,60 @@
 import React, { createContext, useState } from 'react';
+import pizzas from "../public/pizzas.json"
 
 export const MiContexto = createContext();
 
 const Contexto = ({ children }) => {
-  const datosIniciales = [
-    { id: 1, nombre: 'Objeto 1', descripcion: 'Descripción del objeto 1', src: 'https://imag.bonviveur.com/presentacion-final-de-la-pizza-romana.jpg', monto: 5000 },
-    { id: 2, nombre: 'Objeto 2', descripcion: 'Descripción del objeto 2', src: 'https://imag.bonviveur.com/presentacion-final-de-la-pizza-romana.jpg', monto: 5000 },
-    { id: 3, nombre: 'Objeto 3', descripcion: 'Descripción del objeto 3', src: 'https://imag.bonviveur.com/presentacion-final-de-la-pizza-romana.jpg', monto: 5000 },
-    { id: 4, nombre: 'Objeto 4', descripcion: 'Descripción del objeto 4', src: 'https://imag.bonviveur.com/presentacion-final-de-la-pizza-romana.jpg', monto: 5000 },
-    { id: 5, nombre: 'Objeto 5', descripcion: 'Descripción del objeto 5', src: 'https://imag.bonviveur.com/presentacion-final-de-la-pizza-romana.jpg', monto: 5000 },
-    { id: 6, nombre: 'Objeto 6', descripcion: 'Descripción del objeto 6', src: 'https://imag.bonviveur.com/presentacion-final-de-la-pizza-romana.jpg', monto: 5000 }
-  ];
+  const datosIniciales = pizzas
 
   const [productosSeleccionados, setProductosSeleccionados] = useState([]);
+  const [cantidades, setCantidades] = useState({});
+  const [montosIndividuales, setMontosIndividuales] = useState({});
 
   const agregarProducto = (producto) => {
     setProductosSeleccionados([...productosSeleccionados, producto]);
   };
 
+  const sumarCantidad = (id, monto) => {
+    setCantidades((prevCantidades) => ({
+      ...prevCantidades,
+      [id]: (prevCantidades[id] || 0) + 1,
+    }));
+    setMontosIndividuales((prevMontos) => ({
+      ...prevMontos,
+      [id]: (prevMontos[id] || 0) + monto,
+    }));
+  };
+  
+  const restarCantidad = (id, monto) => {
+    if (cantidades[id] && cantidades[id] > 0) {
+      setCantidades((prevCantidades) => ({
+        ...prevCantidades,
+        [id]: prevCantidades[id] - 1,
+      }));
+      setMontosIndividuales((prevMontos) => ({
+        ...prevMontos,
+        [id]: (prevMontos[id] || 0) - monto,
+      }));
+    } else {
+      setCantidades((prevCantidades) => ({
+        ...prevCantidades,
+        [id]: 0, 
+      }));
+      setMontosIndividuales((prevMontos) => ({
+        ...prevMontos,
+        [id]: 0, 
+      }));
+    }
+  };
+
   return (
-    <MiContexto.Provider value={{ datos: datosIniciales, productosSeleccionados, agregarProducto }}>
+    <MiContexto.Provider value={{ 
+      datos: datosIniciales, 
+      productosSeleccionados, 
+      agregarProducto,
+      sumarCantidad, // Agregamos sumarCantidad al contexto
+      restarCantidad // Agregamos restarCantidad al contexto
+    }}>
       {children}
     </MiContexto.Provider>
   );
