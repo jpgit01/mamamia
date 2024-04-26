@@ -10,8 +10,19 @@ const Contexto = ({ children }) => {
   const [totalPrecio, setTotalPrecio] = useState(0);
   
   const agregarProducto = (producto) => {
-    const productoConCantidad = { ...producto, cantidad: 1 }; 
-    setProductosSeleccionados([...productosSeleccionados, productoConCantidad]);
+    const productoExistenteIndex = productosSeleccionados.findIndex((p) => p.id === producto.id);
+  
+    if (productoExistenteIndex !== -1) {
+   
+      const nuevosProductos = [...productosSeleccionados];
+      nuevosProductos[productoExistenteIndex].cantidad += 1;
+      setProductosSeleccionados(nuevosProductos);
+    } else {
+
+      const productoConCantidad = { ...producto, cantidad: 1 }; 
+      setProductosSeleccionados([...productosSeleccionados, productoConCantidad]);
+    }
+
     setTotalPrecio(totalPrecio + producto.price);
   };
 
