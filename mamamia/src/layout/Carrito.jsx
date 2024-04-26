@@ -9,35 +9,31 @@ import Image from "react-bootstrap/Image";
 import "./Carrito.css";
 
 const Carrito = () => {
-  const { productosSeleccionados, totalPrecio, calcPrecio} = useContext(MiContexto);
+  const { productosSeleccionados, totalPrecio, ajustarCantidad } = useContext(MiContexto);
 
+  useEffect(() => {
+  }, [productosSeleccionados]);
 
   return (
     <Container>
       <Row className="align-items-center">
         <Col className="text-center">
-        <h3 className="mt-2 mb-2">Producto en el carrito:</h3>
+          <h3 className="mt-2 mb-2">Productos en el carrito:</h3>
         </Col>
         
         <Table striped bordered hover>
           <tbody>
-            {productosSeleccionados.map((pizza, index) => (
+            {productosSeleccionados.map((producto, index) => (
               <tr key={index}>
                 <td>
-                  <Image className="minim" src={pizza.img} />
+                  <Image className="minim" src={producto.img} />
                 </td>
-                <td>{pizza.name}</td>
-                <td>$ {pizza.price}</td>
+                <td>{producto.name}</td>
+                <td>$ {producto.price}</td>
                 <td>
-                  <div className="cantidad">
-                    <Button type="submit" onClick={calcPrecio(1000)} className="tama" variant="primary">
-                      <h3>+</h3>
-                    </Button>
-                    <h3 className="m-3">1</h3>
-                    <Button className="tama"  variant="danger">
-                      <h3>-</h3>
-                    </Button>
-                  </div>
+                  <Button onClick={() => ajustarCantidad(index, 1)}>+</Button>
+                  {producto.cantidad}
+                  <Button onClick={() => ajustarCantidad(index, -1)}>-</Button>
                 </td>
               </tr>
             ))}
@@ -45,7 +41,9 @@ const Carrito = () => {
         </Table>
       </Row>
       <Row>
-{totalPrecio}
+        <Col className="text-center">
+          <h4>Total: ${totalPrecio}</h4>
+        </Col>
       </Row>
     </Container>
   );

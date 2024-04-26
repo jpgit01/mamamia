@@ -7,16 +7,22 @@ const Contexto = ({ children }) => {
   const datosIniciales = pizzas
 
   const [productosSeleccionados, setProductosSeleccionados] = useState([]);
-
+  const [totalPrecio, setTotalPrecio] = useState(0);
+  
   const agregarProducto = (producto) => {
-    setProductosSeleccionados([...productosSeleccionados, producto]);
+    const productoConCantidad = { ...producto, cantidad: 1 }; 
+    setProductosSeleccionados([...productosSeleccionados, productoConCantidad]);
+    setTotalPrecio(totalPrecio + producto.price);
   };
 
-  const [totalPrecio, setTotalPrecio] = useState(0)
 
-  const calcPrecio = (precio)=>{
-    setTotalPrecio(precio)
-  }
+  const ajustarCantidad = (index, cantidad) => {
+    const nuevosProductos = [...productosSeleccionados];
+    nuevosProductos[index].cantidad += cantidad;
+    setProductosSeleccionados(nuevosProductos);
+    const nuevoTotal = totalPrecio + (cantidad * nuevosProductos[index].price);
+    setTotalPrecio(nuevoTotal);
+  };
 
   return (
     <MiContexto.Provider value={{ 
@@ -24,7 +30,7 @@ const Contexto = ({ children }) => {
       productosSeleccionados, 
       agregarProducto,
       totalPrecio,
-      calcPrecio
+      ajustarCantidad
     }}>
       {children}
     </MiContexto.Provider>
