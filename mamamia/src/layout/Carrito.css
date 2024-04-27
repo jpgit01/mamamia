@@ -10,3 +10,20 @@
     width: 100px;
     height: 50px;
 }
+
+.contenido{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.contenidob{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 2px solid grey;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+}
