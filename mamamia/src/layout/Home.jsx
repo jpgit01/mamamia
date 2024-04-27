@@ -7,6 +7,8 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import { useNavigate } from 'react-router-dom';
+import "./Home.css"
+import IconPizza from "../public/IconPizza";
 
 
 const Home = () => {
@@ -39,7 +41,7 @@ const Home = () => {
                     Ingredientes
                     <ul>
                       {num.ingredients.map((ing, index)=>(
-                        <li key={index}>{ing}</li>
+                        <li key={index}><IconPizza tama={30}/> {ing}</li>
                       ))}
                     </ul>
                   </ListGroup.Item>

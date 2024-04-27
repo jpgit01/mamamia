@@ -1,10 +1,10 @@
 
 import React from 'react'
 
-const IconPizza = () => {
+const IconPizza = ({tama}) => {
   return (
 	<>
-<svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="50" height="50" viewBox="0 0 48 48" enableBackground="new 0 0 48 48" xmlSpace="preserve">
+<svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width={tama} height={tama} viewBox="0 0 48 48" enableBackground="new 0 0 48 48" xmlSpace="preserve">
 <polygon fill="#FFD54F" points="20,6 6,42 42,28 "/>
 <g>
 	<path fill="#FF3D00" d="M15.001,32C12.24,32,10,34.238,10,36.999c0,1.147,0.402,2.192,1.053,3.036l8.904-3.463   C19.737,34.015,17.615,32,15.001,32z"/>

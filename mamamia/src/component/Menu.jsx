@@ -23,17 +23,10 @@ function Menu() {
       <Container>
         <Navbar.Brand href={"/"}>
           <NavLink className={claseActive} to={"/"}>
-          <IconPizza/>  Pizzeria Mamma Mia! 
+          <IconPizza tama={50}/>  Pizzeria Mamma Mia! 
           </NavLink>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <NavLink className={claseActive} to={"/"}>
-              Home
-            </NavLink>
-          </Nav>
-        </Navbar.Collapse>
         <NavLink className="carrito" to={"/Carrito"}>
           Carrito ({precioCarrito})
         </NavLink>
