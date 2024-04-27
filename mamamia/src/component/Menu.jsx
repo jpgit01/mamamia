@@ -5,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { NavLink } from "react-router-dom";
 import "./menu.css";
 import { MiContexto } from "../context/Contexto";
+import IconPizza from "../public/IconPizza";
 
 function Menu() {
   const claseActive = ({ isActive }) =>
@@ -20,9 +21,9 @@ function Menu() {
   return (
     <Navbar expand="lg" className="menuCeleste" data-bs-theme="dark">
       <Container>
-        <Navbar.Brand href="/Home">
+        <Navbar.Brand href={"/"}>
           <NavLink className={claseActive} to={"/"}>
-            Pizzeria Mamma Mia!
+          <IconPizza/>  Pizzeria Mamma Mia! 
           </NavLink>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
