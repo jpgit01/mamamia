@@ -1,3 +1,11 @@
 ul {
     list-style-type: none;
   }
+
+  .fondo{
+    background-image: url("../public/pizzabanner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: 45%;
+    height: 200px;
+  }

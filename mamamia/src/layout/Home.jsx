@@ -6,14 +6,14 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
-import { useNavigate } from 'react-router-dom';
-import "./Home.css"
+import { useNavigate } from "react-router-dom";
+import "./Home.css";
 import IconPizza from "../public/IconPizza";
-
 
 const Home = () => {
   const navigate = useNavigate();
-  const { datos, agregarProducto,productosSeleccionados } = useContext(MiContexto);
+  const { datos, agregarProducto, productosSeleccionados } =
+    useContext(MiContexto);
 
   const handleClick = (id) => {
     navigate(`/Pizza/${id}`);
@@ -21,48 +21,70 @@ const Home = () => {
 
   const handleAgregarProducto = (producto) => {
     agregarProducto(producto);
-    console.log(productosSeleccionados)
+    console.log(productosSeleccionados);
   };
 
   return (
-    <Container>
-      <Row>
-        {datos.map((num, index) => (
-          <Col className="col-md-3 mt-5" key={index}>
-            <Card style={{ width: "100%" }}>
-              <Card.Img variant="top" src={num.img} />
-              <Card.Body>
-                <Card.Title>
-                  <h3>{num.name}</h3>
-                </Card.Title>
-                <ListGroup className="list-group-flush">
-                  <ListGroup.Item></ListGroup.Item>
-                  <ListGroup.Item>
-                    Ingredientes
-                    <ul>
-                      {num.ingredients.map((ing, index)=>(
-                        <li key={index}><IconPizza tama={30}/> {ing}</li>
-                      ))}
-                    </ul>
-                  </ListGroup.Item>
-                </ListGroup>
-              </Card.Body>
-              <Card.Footer>
-                <Row className="text-center mt-3 mb-3">
-                  <h2>$ {num.price}</h2>
-                </Row>
-                <Row>
-                  <div className="text-center">
-                    <Button onClick={() => handleClick(num.id)} variant="primary">Ver mas</Button>{" "}
-                    <Button onClick={() => handleAgregarProducto(num)} variant="danger">Añadir</Button>{" "}
-                  </div>
-                </Row>
-              </Card.Footer>
-            </Card>
+    <>
+      <Container fluid>
+        <Row className="fondo">
+          <Col className="text-center mt-5 text-light">
+            <h1>¡Pizería Mamma Mia!</h1>
+            <h5>Tenemos las mejores pizzas que podrás encontrar</h5>
           </Col>
-        ))}
-      </Row>
-    </Container>
+        </Row>
+      </Container>
+      <Container>
+        <Row className="mb-5">
+          {datos.map((num, index) => (
+            <Col className="col-md-3 mt-5" key={index}>
+              <Card style={{ width: "100%" }}>
+                <Card.Img variant="top" src={num.img} />
+                <Card.Body>
+                  <Card.Title>
+                    <h3>{num.name}</h3>
+                  </Card.Title>
+                  <ListGroup className="list-group-flush">
+                    <ListGroup.Item></ListGroup.Item>
+                    <ListGroup.Item>
+                      <h6>Ingredientes:</h6>
+                      <ul>
+                        {num.ingredients.map((ing, index) => (
+                          <li key={index}>
+                            <IconPizza tama={30} /> {ing}
+                          </li>
+                        ))}
+                      </ul>
+                    </ListGroup.Item>
+                  </ListGroup>
+                </Card.Body>
+                <Card.Footer>
+                  <Row className="text-center mt-3 mb-3">
+                    <h2>$ {num.price}</h2>
+                  </Row>
+                  <Row>
+                    <div className="text-center">
+                      <Button
+                        onClick={() => handleClick(num.id)}
+                        variant="primary"
+                      >
+                        Ver mas
+                      </Button>{" "}
+                      <Button
+                        onClick={() => handleAgregarProducto(num)}
+                        variant="danger"
+                      >
+                        Añadir
+                      </Button>{" "}
+                    </div>
+                  </Row>
+                </Card.Footer>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    </>
   );
 };
 

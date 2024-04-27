@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import "./menu.css";
 import { MiContexto } from "../context/Contexto";
 import IconPizza from "../public/IconPizza";
+import { Cart4} from 'react-bootstrap-icons';
 
 function Menu() {
   const claseActive = ({ isActive }) =>
@@ -28,7 +29,7 @@ function Menu() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <NavLink className="carrito" to={"/Carrito"}>
-          Carrito ({precioCarrito})
+        <Cart4 color="white" size={20} /> {precioCarrito}
         </NavLink>
       </Container>
     </Navbar>
