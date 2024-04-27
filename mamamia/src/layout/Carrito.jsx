@@ -29,7 +29,7 @@ const Carrito = () => {
                   <Image className="minim" src={producto.img} />
                 </td>
                 <td>{producto.name}</td>
-                <td>$ {producto.price}</td>
+                <td>$ {producto.price * producto.cantidad}</td>
                 <td>
                   <Button onClick={() => ajustarCantidad(index, 1)}>+</Button>
                   {producto.cantidad}
