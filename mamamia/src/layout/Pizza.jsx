@@ -47,7 +47,7 @@ const Pizza = () => {
                 <Col className="text-end">
                   <Button
                     onClick={() => handleAgregarProducto(pizza)}
-                    variant="danger"
+                    variant="warning"
                   >
                     Añadir
                   </Button>

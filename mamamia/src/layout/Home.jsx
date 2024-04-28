@@ -66,13 +66,13 @@ const Home = () => {
                     <div className="text-center">
                       <Button
                         onClick={() => handleClick(num.id)}
-                        variant="primary"
+                        variant="danger"
                       >
                         Ver mas
                       </Button>{" "}
                       <Button
                         onClick={() => handleAgregarProducto(num)}
-                        variant="danger"
+                        variant="warning"
                       >
                         Añadir
                       </Button>{" "}

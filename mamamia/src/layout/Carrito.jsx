@@ -54,6 +54,7 @@ const Carrito = () => {
                   </div>
                   <div>
                     <Button
+                    variant="success"
                       className="mr-5"
                       onClick={() => ajustarCantidad(index, 1)}
                     >
@@ -66,7 +67,7 @@ const Carrito = () => {
           ))}
         </Col>
       </Row>
-      <Row>
+      <Row className="mb-5">
         <Col className="text-center">
           <h3>Total: ${totalPrecio.toLocaleString("es-CL")}</h3>
           <NavLink to="/Pago">
