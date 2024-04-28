@@ -20,7 +20,7 @@ function Menu() {
   }, [totalPrecio]);
 
   return (
-    <Navbar expand="lg" className="menuCeleste" data-bs-theme="dark">
+    <Navbar expand="lg" className="menuRojo" data-bs-theme="dark">
       <Container>
         <Navbar.Brand href={"/"}>
           <NavLink className={claseActive} to={"/"}>
@@ -29,7 +29,7 @@ function Menu() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <NavLink className="carrito" to={"/Carrito"}>
-        <Cart4 color="white" size={20} /> {precioCarrito}
+        <Cart4 color="white" size={20} /> {precioCarrito.toLocaleString('es-CL')}
         </NavLink>
       </Container>
     </Navbar>

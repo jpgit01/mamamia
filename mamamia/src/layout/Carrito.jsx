@@ -32,13 +32,21 @@ const Carrito = () => {
                 </div>
 
                 <div className=" contenido text-end">
-                  <div><h5 className="me-3">$ {producto.price * producto.cantidad}</h5></div>
+                  <div>
+                    <h5 className="me-3">
+                      ${" "}
+                      {(producto.price * producto.cantidad).toLocaleString(
+                        "es-CL"
+                      )}
+                    </h5>
+                  </div>
+
                   <div>
                     <Button
-                      className="mr-5"
-                      onClick={() => ajustarCantidad(index, 1)}
+                      variant="danger"
+                      onClick={() => ajustarCantidad(index, -1)}
                     >
-                      +
+                      -
                     </Button>
                   </div>
                   <div className="m-3">
@@ -46,10 +54,10 @@ const Carrito = () => {
                   </div>
                   <div>
                     <Button
-                      variant="danger"
-                      onClick={() => ajustarCantidad(index, -1)}
+                      className="mr-5"
+                      onClick={() => ajustarCantidad(index, 1)}
                     >
-                      -
+                      +
                     </Button>
                   </div>
                 </div>
@@ -60,7 +68,7 @@ const Carrito = () => {
       </Row>
       <Row>
         <Col className="text-center">
-          <h3>Total: ${totalPrecio}</h3>
+          <h3>Total: ${totalPrecio.toLocaleString("es-CL")}</h3>
           <Button variant="success">Ir a pagar</Button>
         </Col>
       </Row>

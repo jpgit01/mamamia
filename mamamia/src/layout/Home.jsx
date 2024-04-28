@@ -29,7 +29,7 @@ const Home = () => {
       <Container fluid>
         <Row className="fondo">
           <Col className="text-center mt-5 text-light">
-            <h1>¡Pizería Mamma Mia!</h1>
+            <h1 className="shadow">¡Pizzería Mamma Mia!</h1>
             <h5>Tenemos las mejores pizzas que podrás encontrar</h5>
           </Col>
         </Row>
@@ -42,7 +42,7 @@ const Home = () => {
                 <Card.Img variant="top" src={num.img} />
                 <Card.Body>
                   <Card.Title>
-                    <h3>{num.name}</h3>
+                    <h3 className="text-capitalize">{num.name}</h3>
                   </Card.Title>
                   <ListGroup className="list-group-flush">
                     <ListGroup.Item></ListGroup.Item>
@@ -60,7 +60,7 @@ const Home = () => {
                 </Card.Body>
                 <Card.Footer>
                   <Row className="text-center mt-3 mb-3">
-                    <h2>$ {num.price}</h2>
+                    <h2>$ {num.price.toLocaleString('es-CL')}</h2>
                   </Row>
                   <Row>
                     <div className="text-center">

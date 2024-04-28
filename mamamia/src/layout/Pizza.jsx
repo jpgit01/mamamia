@@ -28,7 +28,7 @@ const Pizza = () => {
             <Col className="p-3" xs={6}>
               <Row>
                 <Col>
-                  <h2>{pizza.name}</h2>
+                  <h2 className="text-capitalize" >{pizza.name}</h2>
                   <p>{pizza.desc}</p>
                   <h6>Ingredientes:</h6>
                   <ul>
@@ -42,7 +42,7 @@ const Pizza = () => {
               </Row>
               <Row>
                 <Col>
-                  <h3 className="text-end">$ {pizza.price}</h3>
+                  <h3 className="text-end">$ {pizza.price.toLocaleString('es-CL')}</h3>
                 </Col>
                 <Col className="text-end">
                   <Button
