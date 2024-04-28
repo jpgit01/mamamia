@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/esm/Button";
 import Image from "react-bootstrap/Image";
 import "./Carrito.css";
+import { NavLink } from "react-router-dom";
 
 const Carrito = () => {
   const { productosSeleccionados, totalPrecio, ajustarCantidad } =
@@ -68,7 +69,9 @@ const Carrito = () => {
       <Row>
         <Col className="text-center">
           <h3>Total: ${totalPrecio.toLocaleString("es-CL")}</h3>
-          <Button variant="success">Ir a pagar</Button>
+          <NavLink to="/Pago">
+            <Button variant="success">Ir a pagar</Button>
+          </NavLink>
         </Col>
       </Row>
     </Container>
