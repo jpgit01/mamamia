@@ -18,7 +18,6 @@ const Contexto = ({ children }) => {
       nuevosProductos[productoExistenteIndex].cantidad += 1;
       setProductosSeleccionados(nuevosProductos);
     } else {
-
       const productoConCantidad = { ...producto, cantidad: 1 }; 
       setProductosSeleccionados([...productosSeleccionados, productoConCantidad]);
     }

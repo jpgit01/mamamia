@@ -2,10 +2,28 @@ ul {
     list-style-type: none;
   }
 
-  .fondo{
+  .fondo {
+    position: relative;
     background-image: url("../public/pizzabanner.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position-y: 45%;
     height: 200px;
+  }
+  
+  .fondo::after {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.3); 
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .texto-titulo {
+    position: relative;
+    z-index: 1; 
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }

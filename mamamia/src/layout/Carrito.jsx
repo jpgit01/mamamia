@@ -3,7 +3,6 @@ import { MiContexto } from "../context/Contexto";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/esm/Button";
 import Image from "react-bootstrap/Image";
 import "./Carrito.css";
@@ -25,7 +24,7 @@ const Carrito = () => {
         <Col>
           {productosSeleccionados.map((producto, index) => (
             <Row key={index}>
-              <div className="contenidob">
+              <Col className="contenidob">
                 <div className="contenido">
                   <Image className="minim" src={producto.img} />
                   <h5 className="text-capitalize ms-3"> {producto.name}</h5>
@@ -61,7 +60,7 @@ const Carrito = () => {
                     </Button>
                   </div>
                 </div>
-              </div>
+              </Col>
             </Row>
           ))}
         </Col>

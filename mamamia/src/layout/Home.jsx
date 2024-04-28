@@ -28,7 +28,7 @@ const Home = () => {
     <>
       <Container fluid>
         <Row className="fondo">
-          <Col className="text-center mt-5 text-light">
+          <Col className="text-center mt-5 text-light texto-titulo">
             <h1 className="shadow">¡Pizzería Mamma Mia!</h1>
             <h5>Tenemos las mejores pizzas que podrás encontrar</h5>
           </Col>
@@ -50,7 +50,7 @@ const Home = () => {
                       <h6>Ingredientes:</h6>
                       <ul>
                         {num.ingredients.map((ing, index) => (
-                          <li key={index}>
+                          <li key={index} className="text-capitalize">
                             <IconPizza tama={30} /> {ing}
                           </li>
                         ))}

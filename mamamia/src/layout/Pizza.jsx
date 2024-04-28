@@ -33,7 +33,7 @@ const Pizza = () => {
                   <h6>Ingredientes:</h6>
                   <ul>
                     {pizza.ingredients.map((ing, index) => (
-                      <li key={index}>
+                      <li key={index} className="text-capitalize">
                         <IconPizza tama={30} /> {ing}
                       </li>
                     ))}

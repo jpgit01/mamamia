@@ -27,7 +27,6 @@ function Menu() {
           <IconPizza tama={50}/>  Pizzeria Mamma Mia! 
           </NavLink>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <NavLink className="carrito" to={"/Carrito"}>
         <Cart4 color="white" size={20} /> {precioCarrito.toLocaleString('es-CL')}
         </NavLink>
